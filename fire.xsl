@@ -3,15 +3,15 @@
 
 <!-- Find all Pokemon that have a type of "fire" -->
 <!-- select count(*) from pokemon_types_view where type1 = 'fire' OR type2 = 'fire' = 64 -->
-  <xsl:variable name="fire-pokemon" select="//pokemon[type='fire']"/>
+<xsl:variable name="fire-pokemon" select="//pokemon[type='fire']"/>
 
 <!-- This generates a comma-separated list for the Pokemon types; 'grass, poison' or 'normal' -->
 <xsl:template match="type[position() != last()]">
-    <xsl:value-of select="text()"/>, 
-  </xsl:template>
-  <xsl:template match="type[position() = last()]">
-    <xsl:value-of select="text()"/>
-  </xsl:template>
+  <xsl:value-of select="text()"/>, 
+</xsl:template>
+<xsl:template match="type[position() = last()]">
+  <xsl:value-of select="text()"/>
+</xsl:template>
 
 <!--
   These rules will generate text output rather than text; these are useful for more easily
@@ -34,28 +34,28 @@
   These rules will generate HTML output rather than text. This is to demonstrate
   the power of using XSLT to create pretty output from XML sources.
   -->
-  <xsl:template match="/pokedex">
-    <html>
-    <body>
-    <h2>All Fire-type Pokemon</h2>
-    <table border="1">
-      <tr bgcolor="#9acd32">
-        <th>Name</th>
-        <th>Pokedex #</th>
-        <th>Types</th>
-      </tr>
-      <xsl:apply-templates select="$fire-pokemon" />
-    </table>
-    </body>
-    </html>
-  </xsl:template>
+<xsl:template match="/pokedex">
+  <html>
+  <body>
+  <h2>All Fire-type Pokemon</h2>
+  <table border="1">
+    <tr bgcolor="#9acd32">
+      <th>Name</th>
+      <th>Pokedex #</th>
+      <th>Types</th>
+    </tr>
+    <xsl:apply-templates select="$fire-pokemon" />
+  </table>
+  </body>
+  </html>
+</xsl:template>
 
-  <xsl:template match="pokemon">
-      <tr>
-        <td><xsl:value-of select="name" /></td>
-        <td><xsl:value-of select="@pokedex" /></td>
-        <td><xsl:apply-templates select="type" /></td>
-      </tr>
-  </xsl:template>
+<xsl:template match="pokemon">
+    <tr>
+      <td><xsl:value-of select="name" /></td>
+      <td><xsl:value-of select="@pokedex" /></td>
+      <td><xsl:apply-templates select="type" /></td>
+    </tr>
+</xsl:template>
 
 </xsl:stylesheet>

@@ -4,10 +4,10 @@
 <!-- Find all Pokemon that fit particular attack/defense/speed values -->
 
 <!-- The below rule will generate a comma-separated list from the 'type' nodes -->
-  <xsl:template match="type[position() != last()]"><xsl:value-of select="text()"/>, </xsl:template>
-  <xsl:template match="type[position() = last()]">
-    <xsl:value-of select="text()"/>
-  </xsl:template>
+<xsl:template match="type[position() != last()]"><xsl:value-of select="text()"/>, </xsl:template>
+<xsl:template match="type[position() = last()]">
+  <xsl:value-of select="text()"/>
+</xsl:template>
 
 <!--
   These rules will generate text output rather than text; these are useful for more easily
